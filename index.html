@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GazitHUB Trade | China Sourcing, Supplier Verification &amp; Import Solutions</title>
   <meta name="description"
-    content="GazitHUB Trade helps international buyers import from China with confidence — supplier verification, price negotiation, quality inspection, shipping and customs support. 12+ years of on-the-ground sourcing experience.">
+    content="GazitHUB Trade helps international buyers import from China with confidence — supplier verification, price negotiation, quality inspection, shipping and customs support, backed by extensive on-the-ground sourcing experience.">
   <meta name="keywords"
     content="China sourcing agent, import from China, supplier verification, quality inspection China, sourcing company, China trading company, product sourcing agent">
   <meta name="robots" content="index, follow">
@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="GazitHUB Trade">
   <meta property="og:title" content="GazitHUB Trade | China Sourcing &amp; End-to-End Import Solutions">
   <meta property="og:description"
-    content="12+ years sourcing, verifying and shipping products from China to buyers worldwide. Request a quote in minutes.">
+    content="sourcing, verifying and shipping products from China to buyers worldwide. Request a quote in minutes.">
   <meta property="og:url" content="#">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0B1F3A">
@@ -486,7 +486,7 @@
     /* ============ HERO ============ */
     .hero {
       position: relative;
-      padding: 168px 0 100px;
+      padding: 90px 0 100px;
       background:
         radial-gradient(1100px 520px at 82% -10%, rgba(201, 162, 39, 0.10), transparent 60%),
         radial-gradient(900px 500px at -10% 20%, rgba(11, 31, 58, 0.05), transparent 60%),
@@ -845,58 +845,95 @@
     }
 
     .cat-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
+      background: transparent;
+      border: none;
+      padding: 0;
+      border-radius: var(--radius);
+      perspective: 1200px;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    .cat-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s var(--ease);
+      transform-style: preserve-3d;
+      border-radius: var(--radius);
+    }
+
+    .cat-card:hover .cat-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .cat-card-front,
+    .cat-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       border-radius: var(--radius);
       padding: 26px 22px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid var(--border);
     }
 
-    .cat-card:hover {
-      transform: translateY(-6px);
+    .cat-card-front {
+      background: var(--bg);
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cat-card-back {
+      background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+      color: #fff;
+      transform: rotateY(180deg);
+      border-color: var(--navy-deep);
+      gap: 12px;
       box-shadow: var(--shadow-md);
-      background: #fff;
-      border-color: rgba(201, 162, 39, 0.4);
     }
 
     .cat-icon {
-      width: 46px;
-      height: 46px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
       background: var(--navy);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background .35s var(--ease);
     }
 
     .cat-icon svg {
-      width: 23px;
-      height: 23px;
+      width: 26px;
+      height: 26px;
       color: var(--gold-light);
-    }
-
-    .cat-card:hover .cat-icon {
-      background: var(--gold);
-    }
-
-    .cat-card:hover .cat-icon svg {
-      color: var(--navy-deep);
     }
 
     .cat-card h3 {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 15.5px;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .cat-card-front h3 {
       color: var(--navy);
     }
 
-    .cat-card span {
-      font-size: 12.5px;
-      color: var(--slate-light);
+    .cat-card-back h3 {
+      color: var(--gold-light);
+    }
+
+    .cat-card-back span {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
     }
 
     /* ============ PROCESS ============ */
@@ -1207,57 +1244,33 @@
       margin-bottom: 0;
     }
 
-    .about-panel {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 38px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+    .about-image-wrapper {
       position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
     }
 
-    .about-panel .item b {
+    .about-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-family: 'Fraunces', serif;
-      font-size: 34px;
-      color: var(--navy);
+      transition: transform 0.6s var(--ease);
     }
 
-    .about-panel .item span {
-      font-size: 13px;
-      color: var(--slate);
+    .about-image-wrapper:hover img {
+      transform: scale(1.05);
     }
 
-    .about-panel .item {
-      border-left: 3px solid var(--gold);
-      padding-left: 16px;
-    }
-
-    .offices {
-      margin-top: 26px;
-      padding-top: 26px;
-      border-top: 1px solid var(--border);
-      grid-column: 1/-1;
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .offices .off {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
-      color: var(--navy-soft);
-      font-weight: 500;
-    }
-
-    .offices svg {
-      width: 17px;
-      height: 17px;
-      color: var(--gold-ink);
+    .about-image-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      pointer-events: none;
     }
 
     /* ============ TESTIMONIALS ============ */
@@ -2082,11 +2095,11 @@
   <!-- ============ HEADER ============ -->
   <header id="siteHeader">
     <div class="nav-inner">
-      <a href="#main" class="logo" aria-label="GazitHUB Trade home">
+      <a href="#" class="logo" aria-label="GazitHUB Trade home">
         <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true">
             <use href="#ic-globe" />
           </svg></span>
-        <span>GazitHUB Trade<small>China Sourcing Specialists</small></span>
+        <span>GazitHUB Trade<small>China Sourcing Made Simple.</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#categories">Categories</a>
@@ -2094,7 +2107,6 @@
         <a href="#services">Services</a>
         <a href="#why">Why Us</a>
         <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
         <a href="#quote">Contact</a>
       </nav>
       <div class="nav-cta">
@@ -2112,41 +2124,19 @@
       <div class="hero-blob" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy" data-animate>
-          <p class="eyebrow">China Sourcing &amp; Import Solutions</p>
           <h1>We turn China's factories into <em>your</em> reliable supply chain.</h1>
-          <p class="lead">GazitHUB Trade sources, verifies, negotiates, inspects and ships your products from China to
-            any country — backed by 12+ years of on-the-ground sourcing experience international buyers trust.</p>
+          <p class="lead">GazitHUB helps importers, wholesalers, distributors, and growing businesses source quality
+            products directly from trusted manufacturers across China - From supplier sourcing and factory verification,
+            we simplify every step of your sourcing journey.</p>
           <div class="hero-actions">
             <a href="#quote" class="btn btn-gold btn-lg">Request a Quote <svg viewBox="0 0 24 24">
                 <use href="#ic-arrow" />
               </svg></a>
-            <a href="https://wa.me/10000000000" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
+            <a href="https://wa.me/+919928685273" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24">
                 <use href="#ic-whatsapp" />
               </svg> Chat on WhatsApp
             </a>
-          </div>
-          <div class="trust-badges">
-            <div class="trust-badge"><svg viewBox="0 0 24 24">
-                <use href="#ic-time" />
-              </svg>
-              <div><span class="num">12+</span><br><span class="lbl">Years Experience</span></div>
-            </div>
-            <div class="trust-badge"><svg viewBox="0 0 24 24">
-                <use href="#ic-shield" />
-              </svg>
-              <div><span class="num">500+</span><br><span class="lbl">Verified Suppliers</span></div>
-            </div>
-            <div class="trust-badge"><svg viewBox="0 0 24 24">
-                <use href="#ic-globe" />
-              </svg>
-              <div><span class="num">60+</span><br><span class="lbl">Countries Served</span></div>
-            </div>
-            <div class="trust-badge"><svg viewBox="0 0 24 24">
-                <use href="#ic-inspect" />
-              </svg>
-              <div><span class="num">100%</span><br><span class="lbl">Inspected Orders</span></div>
-            </div>
           </div>
         </div>
 
@@ -2160,7 +2150,7 @@
               <circle cx="60" cy="60" r="46" fill="none" stroke="#C9A227" stroke-width="2" />
               <circle cx="60" cy="60" r="30" fill="none" stroke="#C9A227" stroke-width="1" />
               <text font-family="IBM Plex Mono, monospace" font-size="8.6" letter-spacing="1.5" fill="#C9A227">
-                <textPath href="#stampCircle" startOffset="2%">VERIFIED SOURCING • SINCE 2013 •</textPath>
+                <textPath href="#stampCircle" startOffset="2%"> • VERIFIED SOURCING • VERIFIED SOURCING • </textPath>
               </text>
               <g transform="translate(60,60)">
                 <path d="M-10 0l7 7 13-14" fill="none" stroke="#C9A227" stroke-width="4" stroke-linecap="round"
@@ -2204,18 +2194,9 @@
     </section>
 
     <!-- ============ TRUST STRIP ============ -->
-    <div class="strip">
-      <div class="container">
-        <p>Trusted by importers across</p>
-        <div class="marquee">
-          <span>North America</span><span>Europe</span><span>Middle
-            East</span><span>Africa</span><span>Australia</span><span>Southeast Asia</span>
-        </div>
-      </div>
-    </div>
 
     <!-- ============ CATEGORIES ============ -->
-    <section id="categories" class="section-pad">
+    <section id="categories" class="section-pad" style="background:var(--bg-alt);">
       <div class="container">
         <div class="section-head" data-animate>
           <p class="eyebrow">What We Source</p>
@@ -2225,89 +2206,156 @@
         </div>
         <div class="cat-grid" data-animate>
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-home" />
-              </svg></div>
-            <h3>Home &amp; Decoration</h3><span>Furnishing, decor &amp; interior goods</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-home" />
+                  </svg></div>
+                <h3>Home &amp; Decoration</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Home &amp; Decoration</h3>
+                <span>Furnishing, decor &amp; interior goods</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-kitchen" />
-              </svg></div>
-            <h3>Kitchen</h3><span>Cookware &amp; kitchen tools</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-auto" />
+                  </svg></div>
+                <h3>Automobile &amp; Transport</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Automobile &amp; Transport</h3>
+                <span>Auto parts &amp; accessories</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-auto" />
-              </svg></div>
-            <h3>Automobile &amp; Transport</h3><span>Auto parts &amp; accessories</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-electronics" />
+                  </svg></div>
+                <h3>Electronics</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Electronics</h3>
+                <span>Consumer &amp; Industrial Electronics, Solar Products, LED Light</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-electronics" />
-              </svg></div>
-            <h3>Electronics</h3><span>Consumer &amp; industrial electronics</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-fashion" />
+                  </svg></div>
+                <h3>Fashion</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Fashion</h3>
+                <span>Apparel, footwear &amp; accessories</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-fashion" />
-              </svg></div>
-            <h3>Fashion</h3><span>Apparel, footwear &amp; accessories</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-food" />
+                  </svg></div>
+                <h3>Food &amp; Beverage</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Food &amp; Beverage</h3>
+                <span>Packaged food &amp; drinkware</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-food" />
-              </svg></div>
-            <h3>Food &amp; Beverage</h3><span>Packaged food &amp; drinkware</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-toys" />
+                  </svg></div>
+                <h3>Toys &amp; Sports</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Toys &amp; Sports</h3>
+                <span>Toys, games &amp; sporting goods</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-gift" />
-              </svg></div>
-            <h3>Gifts</h3><span>Promotional &amp; gifting items</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-health" />
+                  </svg></div>
+                <h3>Health, Beauty &amp; Baby Care</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Health, Beauty &amp; Baby Care</h3>
+                <span>Personal care &amp; baby products</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-toys" />
-              </svg></div>
-            <h3>Toys &amp; Sports</h3><span>Toys, games &amp; sporting goods</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-machinery" />
+                  </svg></div>
+                <h3>Industrial Machinery</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Industrial Machinery</h3>
+                <span>Equipment &amp; production lines</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-health" />
-              </svg></div>
-            <h3>Health, Beauty &amp; Baby Care</h3><span>Personal care &amp; baby products</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-parts" />
+                  </svg></div>
+                <h3>Parts &amp; Raw Materials</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Parts &amp; Raw Materials</h3>
+                <span>Components &amp; base materials</span>
+              </div>
+            </div>
           </div>
+
           <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-machinery" />
-              </svg></div>
-            <h3>Industrial Machinery</h3><span>Equipment &amp; production lines</span>
+            <div class="cat-card-inner">
+              <div class="cat-card-front">
+                <div class="cat-icon"><svg viewBox="0 0 24 24">
+                    <use href="#cat-jewellery" />
+                  </svg></div>
+                <h3>Jewellery &amp; Watches</h3>
+              </div>
+              <div class="cat-card-back">
+                <h3>Jewellery &amp; Watches</h3>
+                <span>Fine &amp; fashion jewellery</span>
+              </div>
+            </div>
           </div>
-          <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-parts" />
-              </svg></div>
-            <h3>Parts &amp; Raw Materials</h3><span>Components &amp; base materials</span>
-          </div>
-          <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-jewellery" />
-              </svg></div>
-            <h3>Jewellery &amp; Watches</h3><span>Fine &amp; fashion jewellery</span>
-          </div>
-          <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-printing" />
-              </svg></div>
-            <h3>Printing &amp; Packaging</h3><span>Packaging &amp; print solutions</span>
-          </div>
-          <div class="cat-card">
-            <div class="cat-icon"><svg viewBox="0 0 24 24">
-                <use href="#cat-stationery" />
-              </svg></div>
-            <h3>Stationery &amp; Office</h3><span>Office &amp; stationery supplies</span>
-          </div>
+
+
         </div>
       </div>
     </section>
@@ -2379,8 +2427,9 @@
       <div class="container">
         <div class="section-head" data-animate>
           <p class="eyebrow">Our Services</p>
-          <h2>End-to-end support for every stage of import</h2>
-          <p>Engage us for a single service or the complete sourcing-to-delivery pipeline.</p>
+          <h2>Complete China Sourcing Solutions</h2>
+          <p>We help businesses reduce sourcing risks, improve product quality, and purchase directly from reliable
+            manufacturers.</p>
         </div>
         <div class="services-grid" data-animate>
           <div class="service-card">
@@ -2428,6 +2477,7 @@
             <p>Documentation, tariff classification and customs clearance handled for a smooth border crossing.</p>
           </div>
         </div>
+        <p class="eyebrow" style="color:var(--gold-light);">Why GazitHUB</p>
       </div>
     </section>
 
@@ -2437,7 +2487,6 @@
         <div class="why-wrap">
           <div data-animate>
             <div class="why-visual">
-              <p class="eyebrow" style="color:var(--gold-light);">Why GazitHUB</p>
               <div class="stat-big">12+</div>
               <div class="stat-lbl">Years managing China sourcing, verification and logistics for international buyers.
               </div>
@@ -2450,9 +2499,9 @@
             </div>
           </div>
           <div data-animate>
+            <p class="eyebrow">Why Choose Us</p>
             <div class="section-head" style="margin-bottom:36px;">
-              <p class="eyebrow">Why Choose Us</p>
-              <h2>Built for buyers who can't afford supply chain surprises</h2>
+              <h2>Safe, Verified & Transparent Sourcing With Zero Risk</h2>
             </div>
             <div class="why-grid">
               <div class="why-item">
@@ -2460,7 +2509,7 @@
                     <use href="#ic-time" />
                   </svg></div>
                 <div>
-                  <h4>12+ Years Experience</h4>
+                  <h4>China Local Presence</h4>
                   <p>Deep, on-the-ground knowledge of China's manufacturing regions.</p>
                 </div>
               </div>
@@ -2524,7 +2573,7 @@
             <h2 style="font-size:clamp(26px,3.2vw,38px);margin-bottom:20px;">A sourcing partner built on trust, not
               transactions</h2>
             <p>GazitHUB Trade was founded to close the trust gap between international buyers and China's manufacturing
-              base. For over 12 years, our sourcing agents have worked directly with factories across Guangdong,
+              base. Our sourcing agents have worked directly with factories across Guangdong,
               Zhejiang and Fujian to secure fair pricing, verified quality and dependable delivery.</p>
             <p>We work with importers, wholesalers, retail chains and growing brands who need a sourcing partner that
               behaves like an extension of their own team — transparent about costs, rigorous about quality, and
@@ -2533,19 +2582,8 @@
               inspection that happens in person, not over email.</p>
           </div>
           <div data-animate>
-            <div class="about-panel">
-              <div class="item"><b>12+</b><span>Years in China sourcing</span></div>
-              <div class="item"><b>2,000+</b><span>Orders fulfilled</span></div>
-              <div class="item"><b>500+</b><span>Verified factories</span></div>
-              <div class="item"><b>60+</b><span>Countries delivered to</span></div>
-              <div class="offices">
-                <div class="off"><svg viewBox="0 0 24 24">
-                    <use href="#ic-pin" />
-                  </svg> Yiwu Sourcing Office</div>
-                <div class="off"><svg viewBox="0 0 24 24">
-                    <use href="#ic-pin" />
-                  </svg> Guangzhou Sourcing Office</div>
-              </div>
+            <div class="about-image-wrapper">
+              <img src="trade.jpg" alt="GazitHUB Trade Team">
             </div>
           </div>
         </div>
@@ -2553,92 +2591,7 @@
     </section>
 
     <!-- ============ TESTIMONIALS ============ -->
-    <section id="testimonials" class="section-pad" style="background:var(--bg-alt);">
-      <div class="container">
-        <div class="section-head center" data-animate>
-          <p class="eyebrow">Client Testimonials</p>
-          <h2>What our buyers say</h2>
-          <p>Feedback from importers we've supported across retail, e-commerce and industrial supply chains.</p>
-        </div>
-        <div class="testi-grid" data-animate>
-          <div class="testi-card">
-            <div class="quote-icon"><svg viewBox="0 0 24 24">
-                <use href="#ic-quote" />
-              </svg></div>
-            <div class="testi-stars"><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg></div>
-            <p>GazitHUB caught a factory substituting materials before the shipment left China. That single inspection
-              saved us a container of unsellable stock.</p>
-            <div class="testi-person">
-              <div class="avatar">R</div>
-              <div>
-                <div class="name">Robert M.</div>
-                <div class="role">Home Goods Importer, Canada</div>
-              </div>
-            </div>
-          </div>
-          <div class="testi-card">
-            <div class="quote-icon"><svg viewBox="0 0 24 24">
-                <use href="#ic-quote" />
-              </svg></div>
-            <div class="testi-stars"><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg></div>
-            <p>We switched three product lines to GazitHUB's sourcing network and our landed cost dropped 18% with
-              better QC than our previous agent.</p>
-            <div class="testi-person">
-              <div class="avatar">S</div>
-              <div>
-                <div class="name">Sara K.</div>
-                <div class="role">E-commerce Brand Owner, UAE</div>
-              </div>
-            </div>
-          </div>
-          <div class="testi-card">
-            <div class="quote-icon"><svg viewBox="0 0 24 24">
-                <use href="#ic-quote" />
-              </svg></div>
-            <div class="testi-stars"><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg><svg viewBox="0 0 24 24">
-                <use href="#ic-star" />
-              </svg></div>
-            <p>Customs clearance used to be our biggest headache. GazitHUB's documentation and support made our last
-              four shipments completely painless.</p>
-            <div class="testi-person">
-              <div class="avatar">D</div>
-              <div>
-                <div class="name">David O.</div>
-                <div class="role">Industrial Parts Buyer, Nigeria</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- ============ SOCIAL ============ -->
     <section class="social-band" aria-label="Follow us">
@@ -2654,13 +2607,11 @@
           <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">
               <use href="#ic-facebook" />
             </svg></a>
-          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">
+          <a href="https://www.instagram.com/p/DaVNaT8D-1-/?igsh=b3d4NzJ6NzVkcGJz" aria-label="Instagram"
+            target="_blank" rel="noopener"><svg viewBox="0 0 24 24">
               <use href="#ic-instagram" />
             </svg></a>
-          <a href="#" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">
-              <use href="#ic-youtube" />
-            </svg></a>
-          <a href="https://wa.me/10000000000" class="wa" aria-label="WhatsApp" target="_blank" rel="noopener"><svg
+          <a href="https://wa.me/+919928685273" class="wa" aria-label="WhatsApp" target="_blank" rel="noopener"><svg
               viewBox="0 0 24 24">
               <use href="#ic-whatsapp" />
             </svg></a>
@@ -2691,10 +2642,10 @@
             <div class="quote-direct">
               <div class="row"><svg viewBox="0 0 24 24">
                   <use href="#ic-mail" />
-                </svg> sourcing@gazithub.com</div>
+                </svg> info@gazithub.com</div>
               <div class="row"><svg viewBox="0 0 24 24">
                   <use href="#ic-phone" />
-                </svg> +1 (000) 000-0000</div>
+                </svg> +919928685273</div>
               <div class="row"><svg viewBox="0 0 24 24">
                   <use href="#ic-whatsapp" />
                 </svg> Available on WhatsApp</div>
@@ -2717,46 +2668,22 @@
                       id="country" name="country" type="text" required autocomplete="country-name"></div>
                   <div class="field">
                     <label for="category">Product Category <span class="req">*</span></label>
+                    <option value="" selected disabled>Select a category</option>
                     <select id="category" name="category" required>
-                      <option value="" selected disabled>Select a category</option>
-                      <option>Home &amp; Decoration</option>
-                      <option>Kitchen</option>
-                      <option>Automobile &amp; Transport</option>
                       <option>Electronics</option>
                       <option>Fashion</option>
                       <option>Food &amp; Beverage</option>
-                      <option>Gifts</option>
                       <option>Toys &amp; Sports</option>
                       <option>Health, Beauty &amp; Baby Care</option>
                       <option>Industrial Machinery</option>
                       <option>Parts &amp; Raw Materials</option>
                       <option>Jewellery &amp; Watches</option>
-                      <option>Printing &amp; Packaging</option>
-                      <option>Stationery &amp; Office Equipment</option>
                       <option>Other</option>
                     </select>
                   </div>
                   <div class="field full"><label for="productDesc">Product Description <span
                         class="req">*</span></label><textarea id="productDesc" name="productDesc" required
                       placeholder="Describe the product, specifications, materials or reference link"></textarea></div>
-                  <div class="field"><label for="quantity">Quantity Required</label><input id="quantity" name="quantity"
-                      type="text" placeholder="e.g. 5,000 units"></div>
-                  <div class="field"><label for="targetPrice">Target Price (optional)</label><input id="targetPrice"
-                      name="targetPrice" type="text" placeholder="e.g. $2.50 / unit"></div>
-                  <div class="field">
-                    <label for="shipping">Preferred Shipping</label>
-                    <select id="shipping" name="shipping">
-                      <option value="" selected disabled>Select a method</option>
-                      <option>Sea Freight</option>
-                      <option>Air Freight</option>
-                      <option>Rail Freight</option>
-                      <option>Not sure yet</option>
-                    </select>
-                  </div>
-                  <div class="field"><label for="refLink">Reference Link / Image URL</label><input id="refLink"
-                      name="refLink" type="text" placeholder="Optional"></div>
-                  <div class="field full"><label for="message">Additional Message</label><textarea id="message"
-                      name="message" placeholder="Anything else we should know?"></textarea></div>
                 </div>
                 <div class="form-foot">
                   <p class="form-note">By submitting, you agree to be contacted by our sourcing team regarding your
@@ -2787,7 +2714,7 @@
         <p>Get a verified supplier shortlist and transparent pricing for your product — no obligation, no guesswork.</p>
         <div class="cta-actions">
           <a href="#quote" class="btn btn-gold btn-lg">Request a Quote</a>
-          <a href="https://wa.me/10000000000" class="btn btn-outline btn-lg"
+          <a href="https://wa.me/+919928685273" class="btn btn-outline btn-lg"
             style="border-color:rgba(255,255,255,0.35);color:#fff;" target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
       </div>
@@ -2805,19 +2732,17 @@
               </svg></span><span>GazitHUB Trade</span></a>
           <p>End-to-end China sourcing, verification, inspection and logistics for buyers importing to any country.</p>
           <div class="footer-social">
-            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+            <a href="#" aria-label="LinkedIn" target="_blank"><svg viewBox="0 0 24 24">
                 <use href="#ic-linkedin" />
               </svg></a>
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24">
+            <a href="#" aria-label="Facebook" target="_blank"><svg viewBox="0 0 24 24">
                 <use href="#ic-facebook" />
               </svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24">
+            <a href="https://www.instagram.com/p/DaVNaT8D-1-/?igsh=b3d4NzJ6NzVkcGJz" aria-label="Instagram"
+              target="_blank"><svg viewBox="0 0 24 24">
                 <use href="#ic-instagram" />
               </svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24">
-                <use href="#ic-youtube" />
-              </svg></a>
-            <a href="https://wa.me/10000000000" aria-label="WhatsApp"><svg viewBox="0 0 24 24">
+            <a href="https://wa.me/+919928685273" aria-label="WhatsApp" target="_blank"><svg viewBox="0 0 24 24">
                 <use href="#ic-whatsapp" />
               </svg></a>
           </div>
@@ -2845,18 +2770,29 @@
         <div>
           <h4>Contact</h4>
           <ul class="footer-contact">
-            <li><svg viewBox="0 0 24 24">
-                <use href="#ic-pin" />
-              </svg> Yiwu &amp; Guangzhou, China</li>
-            <li><svg viewBox="0 0 24 24">
-                <use href="#ic-mail" />
-              </svg> sourcing@gazithub.com</li>
-            <li><svg viewBox="0 0 24 24">
-                <use href="#ic-phone" />
-              </svg> +1 (000) 000-0000</li>
-            <li><svg viewBox="0 0 24 24">
-                <use href="#ic-whatsapp" />
-              </svg> WhatsApp Support 24/7</li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <use href="#ic-pin"></use>
+              </svg>
+              Guzhen Huating Zhi Fu Plaza, Building 2, FL-2/463<br>
+              Guzhen Road, Xixiang Subdistrict,<br>
+              Bao'an District, Shenzhen City,<br>
+              Guangdong, China - 518100
+            </li>
+
+            <li>
+              <svg viewBox="0 0 24 24">
+                <use href="#ic-mail"></use>
+              </svg>
+              info@gazithub.com
+            </li>
+
+            <li>
+              <svg viewBox="0 0 24 24">
+                <use href="#ic-whatsapp"></use>
+              </svg>
+              +91 99286 85273
+            </li>
           </ul>
         </div>
       </div>
@@ -2870,7 +2806,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/10000000000" class="fab-wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><svg
+  <a href="https://wa.me/+919928685273" class="fab-wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><svg
       viewBox="0 0 24 24">
       <use href="#ic-whatsapp" />
     </svg></a>
