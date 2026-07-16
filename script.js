@@ -41,12 +41,11 @@
         document.querySelectorAll('[data-animate]').forEach(function (el) { el.classList.add('in-view'); });
       }
 
-      // Quote form (client-side demo — wire to your backend/email service to go live)
-      var form = document.getElementById('quoteForm');
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!form.checkValidity()) { form.reportValidity(); return; }
-        document.getElementById('formFields').style.display = 'none';
-        document.getElementById('formSuccess').classList.add('show');
+      // Contact WhatsApp button enhancement
+      var waLinks = document.querySelectorAll('a[href^="https://wa.me"]');
+      waLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          // Optional: track WhatsApp click analytics here
+        });
       });
     })();

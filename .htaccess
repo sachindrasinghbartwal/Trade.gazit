@@ -1,0 +1,111 @@
+# =========================================================
+# GazitHUB Trade — Static Website .htaccess
+# Place this file inside: /public_html/trade/.htaccess
+# =========================================================
+
+# Custom 404 page
+ErrorDocument 404 /404.html
+
+# Disable directory browsing
+Options -Indexes
+
+# ---------------------------------------------------------
+# Force HTTPS
+# ---------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------
+# Security headers
+# ---------------------------------------------------------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # Enable this only after confirming HTTPS works correctly everywhere:
+    # Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# ---------------------------------------------------------
+# Protect hidden and sensitive files
+# Allows /.well-known/ for SSL verification
+# ---------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
+</IfModule>
+
+<FilesMatch "(?i)(^\.|\.env|\.git|composer\.(json|lock)|package(-lock)?\.json|yarn\.lock|README|LICENSE|backup|config|database|\.sql|\.log|\.bak|\.ini|\.sh)$">
+    Require all denied
+</FilesMatch>
+
+# Block access to common archive/backup files
+<FilesMatch "(?i)\.(zip|rar|7z|tar|gz|sql|bak|old|log)$">
+    Require all denied
+</FilesMatch>
+
+# ---------------------------------------------------------
+# Prevent MIME-type guessing for common static assets
+# ---------------------------------------------------------
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType application/json .json
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType font/woff2 .woff2
+</IfModule>
+
+# ---------------------------------------------------------
+# Compression
+# ---------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------
+# Browser caching
+# ---------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/json "access plus 0 seconds"
+
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|avif|svg|ico|woff2)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------
+# Restrict unnecessary HTTP methods
+# ---------------------------------------------------------
+<LimitExcept GET POST HEAD OPTIONS>
+    Require all denied
+</LimitExcept>
